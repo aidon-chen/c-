@@ -32,6 +32,8 @@
             picProc = new PictureBox();
             btnOpenImage = new Button();
             label1 = new Label();
+            button1 = new Button();
+            btnGray = new Button();
             ((System.ComponentModel.ISupportInitialize)picOrg).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picProc).BeginInit();
             SuspendLayout();
@@ -73,11 +75,32 @@
             label1.TabIndex = 3;
             label1.Text = "label1";
             // 
+            // button1
+            // 
+            button1.Location = new Point(0, 0);
+            button1.Name = "button1";
+            button1.Size = new Size(112, 34);
+            button1.TabIndex = 4;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // btnGray
+            // 
+            btnGray.Location = new Point(284, 538);
+            btnGray.Name = "btnGray";
+            btnGray.Size = new Size(112, 34);
+            btnGray.TabIndex = 5;
+            btnGray.Text = "button2";
+            btnGray.UseVisualStyleBackColor = true;
+            btnGray.Click += btnGray_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(11F, 24F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(957, 646);
+            Controls.Add(btnGray);
+            Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(btnOpenImage);
             Controls.Add(picProc);
@@ -96,5 +119,7 @@
         private PictureBox picProc;
         private Button btnOpenImage;
         private Label label1;
+        private Button button1;
+        private Button btnGray;
     }
 }

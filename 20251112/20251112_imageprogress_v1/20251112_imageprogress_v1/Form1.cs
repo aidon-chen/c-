@@ -9,6 +9,10 @@ namespace _20251112_imageprogress_v1
             InitializeComponent();
         }
 
+        Image img;
+
+        //全局变量
+
         private void btnOpenImage_Click(object sender, EventArgs e)
         {
             //打开图片
@@ -20,7 +24,7 @@ namespace _20251112_imageprogress_v1
             ofd.ShowDialog();
             //显示对话框
 
-            Image img = Image.FromFile(ofd.FileName);
+            img = Image.FromFile(ofd.FileName);
 
             //使用文件名实体化类
 
@@ -45,6 +49,31 @@ namespace _20251112_imageprogress_v1
 
         }
 
+        private void btnGray_Click(object sender, EventArgs e)
+        {
+            //灰度化
+            Bitmap bmpOrg = new Bitmap(img);
 
+            Bitmap bmpProc = new Bitmap(img.Width, img.Height);
+
+            for (int i = 0; i < img.Width; i++) 
+            {
+                for (int j = 0; j < img.Height; j++) 
+                {
+                    Color c = bmpOrg.GetPixel(i, j);
+
+                    int x = (c.R + c.G + c.B)/3;
+                    Color cGray = Color.FromArgb(x, x, x);
+                    bmpProc.SetPixel(i, j, cGray);
+
+                }
+
+                picProc.BackgroundImage = bmpProc;
+                picProc.BackgroundImageLayout = ImageLayout.Stretch;
+
+                //展示处理后的图片
+            }
+
+        }
     }
 }
