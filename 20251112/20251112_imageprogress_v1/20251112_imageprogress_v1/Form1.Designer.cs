@@ -31,6 +31,7 @@
             picOrg = new PictureBox();
             picProc = new PictureBox();
             btnOpenImage = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)picOrg).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picProc).BeginInit();
             SuspendLayout();
@@ -38,7 +39,7 @@
             // picOrg
             // 
             picOrg.BorderStyle = BorderStyle.FixedSingle;
-            picOrg.Location = new Point(98, 30);
+            picOrg.Location = new Point(98, 73);
             picOrg.Name = "picOrg";
             picOrg.Size = new Size(298, 405);
             picOrg.TabIndex = 0;
@@ -47,7 +48,7 @@
             // picProc
             // 
             picProc.BorderStyle = BorderStyle.FixedSingle;
-            picProc.Location = new Point(584, 30);
+            picProc.Location = new Point(586, 73);
             picProc.Name = "picProc";
             picProc.Size = new Size(298, 405);
             picProc.TabIndex = 1;
@@ -55,7 +56,7 @@
             // 
             // btnOpenImage
             // 
-            btnOpenImage.Location = new Point(46, 516);
+            btnOpenImage.Location = new Point(40, 538);
             btnOpenImage.Name = "btnOpenImage";
             btnOpenImage.Size = new Size(193, 63);
             btnOpenImage.TabIndex = 2;
@@ -63,11 +64,21 @@
             btnOpenImage.UseVisualStyleBackColor = true;
             btnOpenImage.Click += btnOpenImage_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(98, 25);
+            label1.Name = "label1";
+            label1.Size = new Size(63, 24);
+            label1.TabIndex = 3;
+            label1.Text = "label1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(11F, 24F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(957, 646);
+            Controls.Add(label1);
             Controls.Add(btnOpenImage);
             Controls.Add(picProc);
             Controls.Add(picOrg);
@@ -76,6 +87,7 @@
             ((System.ComponentModel.ISupportInitialize)picOrg).EndInit();
             ((System.ComponentModel.ISupportInitialize)picProc).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -83,5 +95,6 @@
         private PictureBox picOrg;
         private PictureBox picProc;
         private Button btnOpenImage;
+        private Label label1;
     }
 }
