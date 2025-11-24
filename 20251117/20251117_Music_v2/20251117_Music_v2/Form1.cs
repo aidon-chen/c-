@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AxWMPLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-//重构2
+
 
 namespace _20251117_Music_v2
 {
@@ -30,6 +31,8 @@ namespace _20251117_Music_v2
             //选取Lyric
             Lyric.Load("薛之谦-演员.lrc");
 
+            axWindowsMediaPlayer1.URL = "薛之谦-演员.mp3";
+            //调取MP3播放
 
 
             timer1 .Enabled = true;
@@ -39,11 +42,32 @@ namespace _20251117_Music_v2
         int i = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
+            lalTime .Text = axWindowsMediaPlayer1.Ctlcontrols.currentPositionString+ "/" 
+                + axWindowsMediaPlayer1.currentMedia.durationString;
 
-            label1.Text = Lyric.lines[i].Text;
-            i++;
+            //创建Label显示时间
+           
 
-            //从lyric调用lines
+            double curTime = axWindowsMediaPlayer1.Ctlcontrols.currentPosition;
+
+            int curIdx = 0;
+            //存储与时间匹配的歌词索引
+
+            //歌词同步显示
+            for (i = 0; i < Lyric.lines.Count; i++)
+            {
+                if (curTime > Lyric.lines[i].Time && curTime < Lyric.lines[i+1].Time )
+                //找到当前时间所在的歌词区间
+                {
+                    curIdx = i;
+                    
+                    break;
+                }
+            }
+
+            lalTime.Text =  Lyric.lines[curIdx].Text;
+            //括号外找不到i，使用curIdx
+
         }
     }
 }
