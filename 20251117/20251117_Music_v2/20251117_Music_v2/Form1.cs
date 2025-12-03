@@ -88,5 +88,10 @@ namespace _20251117_Music_v2
             timer1.Enabled = true;
             timer1.Interval = 100;
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

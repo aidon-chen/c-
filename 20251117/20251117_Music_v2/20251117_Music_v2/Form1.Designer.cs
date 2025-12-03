@@ -37,6 +37,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblTime = new System.Windows.Forms.Label();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.musicProgressBar1 = new _20251117_Music_v2.MusicProgressBar();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
@@ -112,6 +113,13 @@
             this.axWindowsMediaPlayer1.TabIndex = 3;
             this.axWindowsMediaPlayer1.Visible = false;
             // 
+            // musicProgressBar1
+            // 
+            this.musicProgressBar1.Location = new System.Drawing.Point(309, 217);
+            this.musicProgressBar1.Name = "musicProgressBar1";
+            this.musicProgressBar1.Size = new System.Drawing.Size(301, 84);
+            this.musicProgressBar1.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -119,11 +127,13 @@
             this.BackgroundImage = global::_20251117_Music_v2.Properties.Resources.薛之谦_演员;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 451);
+            this.Controls.Add(this.musicProgressBar1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.lblLyric);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -140,6 +150,7 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private MusicProgressBar musicProgressBar1;
     }
 }
 
