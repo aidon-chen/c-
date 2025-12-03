@@ -7,14 +7,26 @@ using System.Threading.Tasks;
 
 namespace _20251117_Music_v2
 {
-     internal class Lyric
+    class LyricLine
+    {
+        public double time;
+        public string text;
+    }
+
+    //封装歌词与时间的类
+    //存放类的时候注意层级
+
+    internal class Lyric
     {
         // List<string> lines  = new List<string>();这个就舍弃
 
         public List<LyricLine> lines = new List<LyricLine>();
 
+        
+
         public void Load(string fileName)
         {
+            lines.Clear();
 
             FileStream fileStream = new FileStream(fileName, FileMode.Open);
 
@@ -49,8 +61,6 @@ namespace _20251117_Music_v2
                 }
                 //解决换行的空字符串出现问题
 
-
-
                 if (s == null)
                 {
                     break;
@@ -72,13 +82,16 @@ namespace _20251117_Music_v2
                 //分割字符串存储到子字符串，0开始，读取10个字符
 
                 LyricLine lyricLine = new LyricLine();
-                lyricLine.Time = dTime;
-                lyricLine.Text = sText;
+                lyricLine.time = dTime;
+                lyricLine.text = sText;
 
+               
 
                 lines.Add(lyricLine);
 
-                //这里修改为只存储歌词内容，不然就还是会显示时间
+                
+
+
 
 
             }
@@ -97,12 +110,5 @@ namespace _20251117_Music_v2
 
     }
 
-    class LyricLine
-    {
-        public double Time;
-        public string Text;
-    }
-
-    //封装歌词与时间的类
-    //存放类的时候注意层级
+   
 }

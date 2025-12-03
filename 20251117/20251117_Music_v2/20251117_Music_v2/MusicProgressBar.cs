@@ -13,9 +13,23 @@ namespace _20251117_Music_v2
     public partial class MusicProgressBar: UserControl
     {
 
-        public double curPro=0.5;
+        public double curPro=0.02;
+        //初始不为零，显示完整圆
         public double Durantion=1;
+        //初始位置
+
         public int Radius=10 ;
+
+
+        //解决调用问题
+
+        public  void  SetCurPro(double cur)
+        {
+            curPro = cur;
+            this.Invalidate(); //重绘控件
+        }
+        //在属性中打开双储存缓存
+
 
 
         public MusicProgressBar()
@@ -28,9 +42,11 @@ namespace _20251117_Music_v2
 
         }
 
+        Graphics g;
+        //在外部重绘事件中使用Graphics对象，以防止多次创建Graphics对象导致资源浪费
         private void MusicProgressBar_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics; 
+            g = e.Graphics; 
 
             Pen BlackPen = new Pen(Color.Black, 3);
 
@@ -38,7 +54,7 @@ namespace _20251117_Music_v2
 
 
             
-            Pen YellowPen = new Pen(Color.Black, 3);
+            Pen YellowPen = new Pen(Color.Yellow , 3);
             int CurX = (int)(curPro / Durantion * this.Width);
 
             g.DrawLine(YellowPen, 0, this.Height / 2, CurX , this.Height / 2);

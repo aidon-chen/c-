@@ -34,6 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.DoubleBuffered = true;
             this.Name = "MusicProgressBar";
             this.Size = new System.Drawing.Size(780, 116);
             this.Load += new System.EventHandler(this.MusicProgressBar_Load);
