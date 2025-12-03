@@ -40,15 +40,20 @@ namespace _20251117_Music_v2
 
             double curTime = axWindowsMediaPlayer1.Ctlcontrols.currentPosition;
 
+            musicProgressBar1.SetCurPro(axWindowsMediaPlayer1 .Ctlcontrols.currentPosition);
 
-            try
-            {
-                progressBar1.Value = (int)(curTime / axWindowsMediaPlayer1.currentMedia.duration * 100);
+            if(axWindowsMediaPlayer1.currentMedia .duration  <= 0)
+
+
+            { 
+            musicProgressBar1.Durantion = 1;
             }
-            catch (Exception ex)
+            else
             {
-                progressBar1.Value = 0;
+                musicProgressBar1.Durantion = axWindowsMediaPlayer1.currentMedia.duration;
             }
+
+            //使用if语句防止除以0报错 ，try语句没有这种情况无法避免
 
             //进度条显示音乐进度
             //使用try catch防止报错   ，异步加载媒体文件歌曲文件太大可能会发生无法及时加载完成的情况，导致currentMedia为空引用进而报错
@@ -59,7 +64,7 @@ namespace _20251117_Music_v2
             //歌词同步显示
             for (i = 0; i < Lyric.lines.Count; i++)
             {
-                if (curTime > Lyric.lines[i].Time && curTime < Lyric.lines[i+1].Time )
+                if (curTime > Lyric.lines[i].time && curTime < Lyric.lines[i+1].time )
                 //找到当前时间所在的歌词区间
                 {
                     curIdx = i;
@@ -68,8 +73,21 @@ namespace _20251117_Music_v2
                 }
             }
 
-            lblLyric.Text =  Lyric.lines[curIdx].Text;
+            lblLyric.Text =  Lyric.lines[curIdx].text;
             //括号外找不到i，使用curIdx
+
+        }
+
+        int curIdx = 0;
+
+        //记录当前歌词索引
+        class SongAlnum
+        {
+            //歌曲专辑类
+            public string title;
+
+            public List<SongInfo> lstSongs = new List<SongInfo>();
+
 
         }
 
@@ -79,19 +97,128 @@ namespace _20251117_Music_v2
             //读取歌词
 
             //选取Lyric
-            Lyric.Load("薛之谦-演员.lrc");
+            //Lyric.Load("薛之谦-演员.lrc");
 
-            axWindowsMediaPlayer1.URL = "薛之谦-演员.mp3";
+            // axWindowsMediaPlayer1.URL = "薛之谦-演员.mp3";
             //调取MP3播放
 
 
+            // timer1.Enabled = true;
+            //timer1.Interval = 100;
+
+            //载入分析歌词
+            Lyric.Load("Lyric\\" + SongAlnum.lstSongs[curIdx].lyricFileName);
+
+            //播放音乐
+            axWindowsMediaPlayer1.URL = "song\\" + SongAlnum.lstSongs[curIdx].mp3FileName;
+
+
+            //更换背景图片
+            this.BackgroundImage = Image.FromFile("bg\\" + SongAlnum.lstSongs[curIdx].bgFileName);
+
+            //启动计时器
+            timer1.Enabled = true;
+            timer1.Interval = 100;
+        }
+
+
+
+        private void picNext_Click(object sender, EventArgs e)
+        {
+            //读取歌词
+
+            //选取Lyric
+           // Lyric.Load("薛之谦-演员.lrc");
+
+            //axWindowsMediaPlayer1.URL = "薛之谦-演员.mp3";
+            //调取MP3播放
+
+
+            //timer1.Enabled = true;
+           // timer1.Interval = 100;
+            
+            curIdx++;
+
+            //载入分析歌词
+            Lyric.Load("Lyric\\" + SongAlnum.lstSongs[curIdx % SongAlnum.lstSongs.Count].lyricFileName);
+
+            //播放音乐
+            axWindowsMediaPlayer1.URL = "song\\" + SongAlnum.lstSongs[curIdx].mp3FileName;
+
+
+            //更换背景图片
+            this.BackgroundImage = Image.FromFile("bg\\" + SongAlnum.lstSongs[curIdx].bgFileName);
+
+            //启动计时器
             timer1.Enabled = true;
             timer1.Interval = 100;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //窗体加载时的操作，一次性的操作较多
 
+            SongAlnum.title = "My Favorite Songs";
+
+
+            SongAlnum.lstSongs.Add(
+              new SongInfo("陈一发儿-童话镇.lrc",
+              "陈一发儿-童话镇.mp3",
+              "陈一发儿-童话镇.jpg"
+              ));
+
+
+            SongAlnum.lstSongs.Add(
+                new SongInfo("大壮-我们不一样.lrc",
+                "大壮-我们不一样.mp3",
+                "大壮-我们不一样.jpg"
+                ));
+
+
+
+            SongAlnum.lstSongs.Add(
+                new SongInfo("金南玲-逆流成河.lrc",
+                "金南玲-逆流成河.mp3",
+                "金南玲-逆流成河.jpg"
+                ));
+
+
+            SongAlnum.lstSongs.Add(
+                new SongInfo("薛之谦-演员.lrc",
+                "薛之谦-演员.mp3",
+                "薛之谦-演员.jpg"
+                ));
+
+
+            SongAlnum.lstSongs.Add(
+                new SongInfo("音阙诗听-红昭愿.lrc",
+                "音阙诗听-红昭愿.mp3",
+                "音阙诗听-红昭愿.jpg"
+                ));
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //调用服务器可以
+        }
+    }
+
+
+  
+
+
+    class SongInfo
+    {
+        //歌曲信息类
+        public string lyricFileName;
+        public string bgFileName;
+        public string mp3FileName;
+
+        public SongInfo(string lyricFn, string mp3Fn, string bgFn)
+        {
+            lyricFileName = lyricFn;
+            mp3FileName = mp3Fn;
+            bgFileName = bgFn;
         }
     }
 }
