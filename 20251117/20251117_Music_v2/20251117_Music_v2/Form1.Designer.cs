@@ -34,7 +34,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblTime = new System.Windows.Forms.Label();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.musicProgressBar1 = new _20251117_Music_v2.MusicProgressBar();
@@ -62,8 +61,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.panel1.Controls.Add(this.musicProgressBar1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.lblTime);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlLight;
@@ -83,13 +82,6 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(186, 43);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(441, 23);
-            this.progressBar1.TabIndex = 1;
             // 
             // lblTime
             // 
@@ -115,9 +107,10 @@
             // 
             // musicProgressBar1
             // 
-            this.musicProgressBar1.Location = new System.Drawing.Point(309, 217);
+            this.musicProgressBar1.BackColor = System.Drawing.Color.Transparent;
+            this.musicProgressBar1.Location = new System.Drawing.Point(113, 36);
             this.musicProgressBar1.Name = "musicProgressBar1";
-            this.musicProgressBar1.Size = new System.Drawing.Size(301, 84);
+            this.musicProgressBar1.Size = new System.Drawing.Size(544, 26);
             this.musicProgressBar1.TabIndex = 5;
             // 
             // Form1
@@ -127,7 +120,6 @@
             this.BackgroundImage = global::_20251117_Music_v2.Properties.Resources.薛之谦_演员;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 451);
-            this.Controls.Add(this.musicProgressBar1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.lblLyric);
@@ -148,7 +140,6 @@
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblTime;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private MusicProgressBar musicProgressBar1;
     }

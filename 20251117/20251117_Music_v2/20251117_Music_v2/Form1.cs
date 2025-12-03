@@ -40,15 +40,20 @@ namespace _20251117_Music_v2
 
             double curTime = axWindowsMediaPlayer1.Ctlcontrols.currentPosition;
 
+            musicProgressBar1.SetCurPro(axWindowsMediaPlayer1 .Ctlcontrols.currentPosition);
 
-            try
-            {
-                progressBar1.Value = (int)(curTime / axWindowsMediaPlayer1.currentMedia.duration * 100);
+            if(axWindowsMediaPlayer1.currentMedia .duration  <= 0)
+
+
+            { 
+            musicProgressBar1.Durantion = 1;
             }
-            catch (Exception ex)
+            else
             {
-                progressBar1.Value = 0;
+                musicProgressBar1.Durantion = axWindowsMediaPlayer1.currentMedia.duration;
             }
+
+            //使用if语句防止除以0报错 ，try语句没有这种情况无法避免
 
             //进度条显示音乐进度
             //使用try catch防止报错   ，异步加载媒体文件歌曲文件太大可能会发生无法及时加载完成的情况，导致currentMedia为空引用进而报错
