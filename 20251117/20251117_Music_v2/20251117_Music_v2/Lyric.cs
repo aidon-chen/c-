@@ -61,12 +61,7 @@ namespace _20251117_Music_v2
                 }
                 //解决换行的空字符串出现问题
 
-<<<<<<< HEAD
-            
-=======
-                s = s.Trim();
-                //移除字符串首尾的空白字符
->>>>>>> a6d46caf0d0633fd612b7294b1ed3bc397c29ba0
+
 
                 if (s == null)
                 {
@@ -96,12 +91,6 @@ namespace _20251117_Music_v2
 
                 lines.Add(lyricLine);
 
-                
-
-<<<<<<< HEAD
-
-=======
->>>>>>> a6d46caf0d0633fd612b7294b1ed3bc397c29ba0
                 //这里修改为只存储歌词内容，不然就还是会显示时间
 
 

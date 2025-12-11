@@ -94,6 +94,19 @@ namespace _20251117_Music_v2
 
         }
 
+        int curIdx = 0;
+
+        //记录当前歌词索引
+        class SongAlnum
+        {
+            //歌曲专辑类
+            public string title;
+
+            public List<SongInfo> lstSongs = new List<SongInfo>();
+
+
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -105,6 +118,12 @@ namespace _20251117_Music_v2
             // axWindowsMediaPlayer1.URL = "薛之谦-演员.mp3";
             //调取MP3播放
 
+
+            // timer1.Enabled = true;
+            //timer1.Interval = 100;
+
+            //载入分析歌词
+            Lyric.Load("Lyric\\" + SongAlnum.lstSongs[curIdx].lyricFileName);
 
             // timer1.Enabled = true;
             //timer1.Interval = 100;
@@ -183,27 +202,17 @@ namespace _20251117_Music_v2
         {
             //窗体加载时的操作，一次性的操作较多
 
-<<<<<<< HEAD
-            //  SongAlnum.title = "My Favorite Songs";
-
-            songAlnum.lstSongs.Add(
-=======
             SongAlnum.title = "My Favorite Songs";
 
 
             SongAlnum.lstSongs.Add(
->>>>>>> a6d46caf0d0633fd612b7294b1ed3bc397c29ba0
               new SongInfo("陈一发儿-童话镇.lrc",
               "陈一发儿-童话镇.mp3",
               "陈一发儿-童话镇.jpg"
               ));
 
 
-<<<<<<< HEAD
-            songAlnum.lstSongs.Add(
-=======
             SongAlnum.lstSongs.Add(
->>>>>>> a6d46caf0d0633fd612b7294b1ed3bc397c29ba0
                 new SongInfo("大壮-我们不一样.lrc",
                 "大壮-我们不一样.mp3",
                 "大壮-我们不一样.jpg"
@@ -211,33 +220,21 @@ namespace _20251117_Music_v2
 
 
 
-<<<<<<< HEAD
-            songAlnum.lstSongs.Add(
-=======
             SongAlnum.lstSongs.Add(
->>>>>>> a6d46caf0d0633fd612b7294b1ed3bc397c29ba0
                 new SongInfo("金南玲-逆流成河.lrc",
                 "金南玲-逆流成河.mp3",
                 "金南玲-逆流成河.jpg"
                 ));
 
 
-<<<<<<< HEAD
-            songAlnum.lstSongs.Add(
-=======
             SongAlnum.lstSongs.Add(
->>>>>>> a6d46caf0d0633fd612b7294b1ed3bc397c29ba0
                 new SongInfo("薛之谦-演员.lrc",
                 "薛之谦-演员.mp3",
                 "薛之谦-演员.jpg"
                 ));
 
 
-<<<<<<< HEAD
-            songAlnum.lstSongs.Add(
-=======
             SongAlnum.lstSongs.Add(
->>>>>>> a6d46caf0d0633fd612b7294b1ed3bc397c29ba0
                 new SongInfo("音阙诗听-红昭愿.lrc",
                 "音阙诗听-红昭愿.mp3",
                 "音阙诗听-红昭愿.jpg"
@@ -251,11 +248,8 @@ namespace _20251117_Music_v2
     }
 
 
-<<<<<<< HEAD
-=======
   
 
->>>>>>> a6d46caf0d0633fd612b7294b1ed3bc397c29ba0
 
     class SongInfo
     {
