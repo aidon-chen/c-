@@ -81,25 +81,48 @@ namespace _20251117_Music_v2
 
         }
 
-        int curIdx = 0;
-
-        //记录当前歌词索引
-        class SongAlnum
-        {
-            //歌曲专辑类
-            public string title;
-
-            public List<SongInfo> lstSongs = new List<SongInfo>();
-
-
-        }
-
-     
-      
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+            //读取歌词
+
+            //选取Lyric
+            //Lyric.Load("薛之谦-演员.lrc");
+
+            // axWindowsMediaPlayer1.URL = "薛之谦-演员.mp3";
+            //调取MP3播放
+
+
+            // timer1.Enabled = true;
+            //timer1.Interval = 100;
+
+            //载入分析歌词
+            Lyric.Load("Lyric\\" + SongAlnum.lstSongs[curIdx].lyricFileName);
+
+            // timer1.Enabled = true;
+            //timer1.Interval = 100;
+
+            //载入分析歌词
+
+            Lyric.Load("Lyric\\" + songAlnum.lstSongs[curIdx].lyricFileName);
+
+            //播放音乐
+            axWindowsMediaPlayer1.URL = "song\\" + songAlnum.lstSongs[curIdx].mp3FileName;
+
+
+            //更换背景图片
+            this.BackgroundImage = Image.FromFile("bg\\" + songAlnum.lstSongs[curIdx].bgFileName);
+
+
+            //启动计时器
+            timer1.Enabled = true;
+            timer1.Interval = 100;
+        }
+
+
+
+        private void picNext_Click(object sender, EventArgs e)
+        {
             //读取歌词
 
             //选取Lyric
@@ -156,6 +179,24 @@ namespace _20251117_Music_v2
             //axWindowsMediaPlayer1.URL = "薛之谦-演员.mp3";
             //调取MP3播放
 
+
+            //timer1.Enabled = true;
+           // timer1.Interval = 100;
+            
+            curIdx++;
+
+            //载入分析歌词
+<<<<<<< HEAD
+            Lyric.Load("Lyric\\" + songAlnum.lstSongs[curIdx % songAlnum.lstSongs.Count].lyricFileName);
+
+            //播放音乐
+            axWindowsMediaPlayer1.URL = "song\\" + songAlnum.lstSongs[curIdx].mp3FileName;
+
+
+            //更换背景图片
+            this.BackgroundImage = Image.FromFile("bg\\" + songAlnum.lstSongs[curIdx].bgFileName);
+=======
+            Lyric.Load("Lyric\\" + SongAlnum.lstSongs[curIdx % SongAlnum.lstSongs.Count].lyricFileName);
 
             //timer1.Enabled = true;
            // timer1.Interval = 100;
